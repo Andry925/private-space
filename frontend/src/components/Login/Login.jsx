@@ -12,9 +12,22 @@ const Login = ({setCurrentUser}) => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
   
     const [selectedRole, setSelectedRole] = useState(null);
     const [dropdownVisible, setDropdownVisible] = useState(false);
+
+    const handleEmailChange = (event) => {
+        const value = event.target.value;
+        setEmail(value);
+
+        // Перевіряємо чи введена пошта закінчується на "@cosmic.edu"
+        if (!value.endsWith('@cosmic.edu')) {
+            setErrorMessage('Hey, it should be cosmic email :)');
+        } else {
+            setErrorMessage('');
+        }
+    };
 
     const toggleDropdown = () => {
         setDropdownVisible(!dropdownVisible);
@@ -65,7 +78,8 @@ const Login = ({setCurrentUser}) => {
                 <div className="inputs">
                 <div className="input">
                         <img src={envelope} alt="email"/>
-                        <input type="email" placeholder='Cosmic E-mail' onChange={(e) => setEmail(e.target.value)}/>
+                        <input type="email" placeholder='Cosmic E-mail' onChange={handleEmailChange} value={email} />
+                            {errorMessage && <p style={{ color: 'red', fontFamily: 'Montserrat', fontSize: '10px', fontWeight: '600' }}>{errorMessage}</p>}
                     </div>
                     <div className="input">
                         <img src={lock} alt="lock"/>
@@ -75,7 +89,7 @@ const Login = ({setCurrentUser}) => {
                 <div className="submit-container">
                     <button
                         className="submit"
-                        onClick={handleLogin}>Увійти
+                        onClick={handleLogin}>Let's go!
                     </button>
                 </div>
             </div>
