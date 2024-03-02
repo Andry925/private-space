@@ -4,7 +4,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 class Subject(models.Model):
     name = models.CharField(max_length=20)
-    mark = models.FloatField(default=0, validators=[
+    mark = models.PositiveIntegerField(default=0, validators=[
         MinValueValidator(0), MaxValueValidator(30)])
     task = models.CharField(max_length=30, blank=True)
     completed_tasks = models.IntegerField(default=0, blank=True)
