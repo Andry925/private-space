@@ -80,19 +80,20 @@ const Login = ({setCurrentUser}) => {
                         <img src={envelope} alt="email"/>
                         <input type="email" placeholder='Cosmic E-mail' onChange={handleEmailChange} value={email} />
                             {errorMessage && <p style={{ color: 'red', fontFamily: 'Montserrat', fontSize: '10px', fontWeight: '600' }}>{errorMessage}</p>}
+                        </div>
+                        <div className="input">
+                            <img src={lock} alt="lock"/>
+                            <input type="password" placeholder='Password' onChange={(e) => setPassword(e.target.value)}/>
+                        </div>
                     </div>
-                    <div className="input">
-                        <img src={lock} alt="lock"/>
-                        <input type="password" placeholder='Password' onChange={(e) => setPassword(e.target.value)}/>
-                    </div>
+                    <div className="submit-container">
+                        <a href="/cab">
+                            <button
+                            className="submit">Let's go!
+                            </button>
+                        </a>
+                    </div> 
                 </div>
-                <div className="submit-container">
-                    <button
-                        className="submit"
-                        onClick={handleLogin}>Let's go!
-                    </button>
-                </div>
-            </div>
         </div>
     );
 };

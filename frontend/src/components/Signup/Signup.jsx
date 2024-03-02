@@ -26,36 +26,40 @@ const Signup = () => {
         setSurname(e.target.value);
     };
 
-    const handleEmailChange = (e) => {
-        const value = e.target.value;
-        setEmail(value);
+    // const handleEmailChange = (e) => {
+    //     const value = e.target.value;
+    //     setEmail(value);
 
-        if (!value.endsWith('@cosmic.edu')) {
-            setErrorMessage('Hey, it should be cosmic email :)');
-        } else {
-            setErrorMessage('');
-        }
-    };
+    //     if (!value.endsWith('@cosmic.edu')) {
+    //         setErrorMessage('Hey, it should be cosmic email :)');
+    //     } else {
+    //         setErrorMessage('');
+    //     }
+    // };
 
     const toggleDropdown = () => {
         setDropdownVisible(!dropdownVisible);
     };
 
-    const handleLogin = async () => {
+    const handleSignup = async () => {
         try {
-          const response = await axios.post("http://127.0.0.1:8000/login", {
-            email,
-            password,
-          }, { withCredentials: true });
-    
-          if (response.status === 201 || response.status === 200) {
-              localStorage.setItem('sessionId', response.data.sessionId);
-            navigate('/c');
-          }
+
+            const response = await axios.post("http://127.0.0.1:8000/signup", {
+                name,
+                surname,
+                email,
+                password,
+                role: selectedRole
+            });
+
+            if (response.status === 201 || response.status === 200) {
+                const dashboardPath = selectedRole === 'Teacher' ? '/teacher-cab' : '/student-cab';
+                navigate(dashboardPath);
+            }
         } catch (error) {
-          console.error("Such user does not exist", error);
+            console.error("Error during signup:", error);
         }
-      }
+    }
 
     const selectRole = (role) => {
         setSelectedRole(role);
@@ -66,7 +70,7 @@ const Signup = () => {
         <div className='login-container'>
             <div className='login-items'>
                 <img src={cosmo} alt="Cosmo Logo" className='cosmoLogo'/>
-                <p className='login-caption'>Log in</p>
+                <p className='login-caption'>Sign Up</p>
                 <div className='dropdown'>
                     <p className='as'>as</p>
                     <div className="dropdown">
@@ -81,34 +85,37 @@ const Signup = () => {
                         )}
                     </div>
                 </div>
-                    <div className="inputs">
-                        <div className='ns-container'>
-                             <div className="ns-f1">
-                                <img src={user} alt="user"/>
-                                <input type="user" placeholder='Name' onChange={(e) => setEmail(e.target.value)}/>
-                            </div>
-                            <div className="ns">
-                                <img src={user} alt="user"/>
-                                <input type="user" placeholder='Surname' onChange={(e) => setEmail(e.target.value)}/>
-                            </div>
+                <div className="inputs">
+                    <div className='ns-container'>
+                        <div className="ns-f1">
+                            <img src={user} alt="user"/>
+                            <input type="user" placeholder='Name' onChange={(e) => setName(e.target.value)}/>
                         </div>
-                           
-                        <div className="input">
-                            <img src={envelope} alt="email"/>
-                            <input type="email" placeholder='Cosmic E-mail' onChange={handleEmailChange} value={email} />
-                            {errorMessage && <p style={{ color: 'red', fontFamily: 'Montserrat', fontSize: '10px', fontWeight: '600' }}>{errorMessage}</p>}
-                        </div>
-                        <div className="input">
-                            <img src={lock} alt="lock"/>
-                            <input type="password" placeholder='Password' onChange={(e) => setPassword(e.target.value)}/>
+                        <div className="ns">
+                            <img src={user} alt="user"/>
+                            <input type="user" placeholder='Surname' onChange={(e) => setSurname(e.target.value)}/>
                         </div>
                     </div>
-                    <div className="submit-container">
-                        <button
-                            className="submit">Let's go!
-                        </button>
-                    </div> 
+                    <div className="input">
+                        <img src={envelope} alt="email"/>
+                        <input type="email" placeholder='Cosmic E-mail' 
+                        // onChange={handleEmailChange} 
+                        value={email} />
+                        {/* {errorMessage && <p style={{ color: 'red', fontFamily: 'Montserrat', fontSize: '10px', fontWeight: '600' }}>{errorMessage}</p>} */}
+                    </div>
+                    <div className="input">
+                        <img src={lock} alt="lock"/>
+                        <input type="password" placeholder='Password' onChange={(e) => setPassword(e.target.value)}/>
+                    </div>
                 </div>
+                <div className="submit-container">
+                    <a href="/login">
+                            <button className="submit" 
+                            onClick={handleSignup}
+                        >Let's go!</button>
+                        </a>
+                </div> 
+            </div>
         </div>
     );
 };
