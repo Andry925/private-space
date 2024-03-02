@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, authenticate
 from django.core.exceptions import ValidationError
 
 UserCustomModel = get_user_model()
@@ -24,3 +24,26 @@ class UserSerializer(serializers.ModelSerializer):
         user_instance.first_name = validated_data.get('first_name')
         user_instance.save()
         return user_instance
+
+
+class LoginSerializer(serializers.ModelSerializer):
+    email = serializers.EmailField()
+    password = serializers.CharField()
+
+    class Meta:
+        model = UserCustomModel
+        fields = ("email", "password")
+
+    def login_user(self, data):
+        email = data.get('email')
+        password = data.get('password')
+        user = authenticate(email=email, password=password)
+        if not user:
+            raise ValidationError("Such user does not exist")
+        return user
+
+
+class LoggedInUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserCustomModel
+        fields = ("email", "username", "created_at", "updated_at")
