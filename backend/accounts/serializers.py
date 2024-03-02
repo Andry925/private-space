@@ -50,4 +50,4 @@ class LoginSerializer(serializers.ModelSerializer):
 class LoggedInUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserCustomModel
-        fields = ("email", "username", "created_at", "updated_at")
+        fields = '__all__'
