@@ -87,6 +87,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'backend.wsgi.application'
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Database
