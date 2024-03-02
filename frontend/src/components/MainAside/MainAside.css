@@ -53,18 +53,4 @@
     margin-left: 24px;
 }
 
-a {
-    text-decoration: none;
-    cursor: pointer;
-}
-
-a:hover {
-    color: #D6BCFA;
-}
-
-.main-login-container a:visited {
-    text-decoration: none;
-    color: inherit;
-}
-
 

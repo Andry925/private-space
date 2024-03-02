@@ -90,11 +90,10 @@
   display: flex;
   align-items: center;
   margin: auto;
-  width: 352px;
-  height: 46px;
+  width: 350px;
+  height: 50px;
   background: white;
-  border-radius: 6px;
-  border: 3px solid #D6BCFA;
+  border-radius: 10px;
 }
 
 .input img {
@@ -133,11 +132,11 @@
   justify-content: center;
   align-items: center;
   height: 46px;
-  width: 362px;
+  width: 352px;
   color: white;
   background: #6B46C1;
-  border-radius: 6px;
-  border: 3px solid #6B46C1;
+  border-radius: 10px;
+  border: 3px solid transparent;
   text-decoration: none;
   margin-top: 23px;
 
