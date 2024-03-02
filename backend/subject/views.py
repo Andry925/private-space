@@ -8,6 +8,8 @@ from accounts.models import UserProfile
 
 
 class ViewAllProfilesView(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+    authentication_classes = (SessionAuthentication,)
 
     def get(self, request):
         profile_role = request.query_params.get('profile_role', None)
@@ -35,6 +37,8 @@ class ViewAllProfilesView(APIView):
 
 
 class EditStudentProfileView(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+    authentication_classes = (SessionAuthentication,)
 
     def get(self, request, pk):
         if request.user.role == "Teacher":
