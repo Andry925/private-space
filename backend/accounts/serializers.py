@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model, authenticate
 from django.core.exceptions import ValidationError
+from . models import UserProfile
 
 UserCustomModel = get_user_model()
 
@@ -22,6 +23,9 @@ class UserSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         user_instance = UserCustomModel.objects.create_user(**validated_data)
         user_instance.first_name = validated_data.get('first_name')
+        UserProfile.objects.create(
+            user=user_instance,
+            profile_role=user_instance.role)
         user_instance.save()
         return user_instance
 

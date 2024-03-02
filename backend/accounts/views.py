@@ -10,7 +10,9 @@ class UserRegisterView(APIView):
     permission_classes = (permissions.AllowAny,)
 
     def post(self, request):
-        serializer = UserSerializer(data=request.data)
+        serializer = UserSerializer(
+            data=request.data, context={
+                'request': request})
         if serializer.is_valid(
                 raise_exception=True) and not request.user.is_authenticated:
             user = serializer.create(request.data)
