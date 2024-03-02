@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.core.validators import MaxValueValidator, MinValueValidator
-
+from subject.models import Subject
 
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
@@ -55,6 +55,7 @@ class UserProfile(models.Model):
         User,
         on_delete=models.CASCADE,
         related_name="profile")
+    subjects = models.ForeignKey(Subject, on_delete=models.CASCADE, blank=True, null=True, related_name="user_profiles")
     group = models.CharField(max_length=6, blank=True)
     faculty = models.IntegerField(default=1,
                                   validators=[
