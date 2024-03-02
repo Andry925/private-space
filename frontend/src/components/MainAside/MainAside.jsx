@@ -11,8 +11,10 @@ const MainAside = () => {
             <a href="/login">
               <button className='lets-go'>Let's go!</button>
             </a>
-            
-        <p className='idh-acc'>I don't have an account :(</p>
+
+           <a href="/signup">
+              <p className='idh-acc'>I don't have an account :(</p>
+            </a> 
           </div>
         </div>
     </div>
