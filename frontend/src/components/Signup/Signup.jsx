@@ -2,26 +2,34 @@ import React, { useState } from 'react';
 import cosmo from '../assets/cosmo.svg';
 import envelope from "../assets/envelope.svg";
 import lock from "../assets/lock.svg";
+import user from "../assets/user.svg";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import './Login.css';
+import './Signup.css';
 
-
-const Login = () => {
+const Signup = () => {
     const navigate = useNavigate();
+    const [name, setName] = useState('');
+    const [surname, setSurname] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-  
     const [selectedRole, setSelectedRole] = useState(null);
     const [dropdownVisible, setDropdownVisible] = useState(false);
 
-    const handleEmailChange = (event) => {
-        const value = event.target.value;
+    const handleNameChange = (e) => {
+        setName(e.target.value);
+    };
+
+    const handleSurnameChange = (e) => {
+        setSurname(e.target.value);
+    };
+
+    const handleEmailChange = (e) => {
+        const value = e.target.value;
         setEmail(value);
 
-        // Перевіряємо чи введена пошта закінчується на "@cosmic.edu"
         if (!value.endsWith('@cosmic.edu')) {
             setErrorMessage('Hey, it should be cosmic email :)');
         } else {
@@ -74,6 +82,17 @@ const Login = () => {
                     </div>
                 </div>
                     <div className="inputs">
+                        <div className='ns-container'>
+                             <div className="ns-f1">
+                                <img src={user} alt="user"/>
+                                <input type="user" placeholder='Name' onChange={(e) => setEmail(e.target.value)}/>
+                            </div>
+                            <div className="ns">
+                                <img src={user} alt="user"/>
+                                <input type="user" placeholder='Surname' onChange={(e) => setEmail(e.target.value)}/>
+                            </div>
+                        </div>
+                           
                         <div className="input">
                             <img src={envelope} alt="email"/>
                             <input type="email" placeholder='Cosmic E-mail' onChange={handleEmailChange} value={email} />
@@ -94,4 +113,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Signup;
