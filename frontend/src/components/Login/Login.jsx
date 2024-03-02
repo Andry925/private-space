@@ -75,10 +75,10 @@ const Login = ({setCurrentUser}) => {
                         )}
                     </div>
                 </div>
-                <div className="inputs">
-                <div className="input">
-                        <img src={envelope} alt="email"/>
-                        <input type="email" placeholder='Cosmic E-mail' onChange={handleEmailChange} value={email} />
+                    <div className="inputs">
+                        <div className="input">
+                            <img src={envelope} alt="email"/>
+                            <input type="email" placeholder='Cosmic E-mail' onChange={handleEmailChange} value={email} />
                             {errorMessage && <p style={{ color: 'red', fontFamily: 'Montserrat', fontSize: '10px', fontWeight: '600' }}>{errorMessage}</p>}
                         </div>
                         <div className="input">
@@ -87,11 +87,9 @@ const Login = ({setCurrentUser}) => {
                         </div>
                     </div>
                     <div className="submit-container">
-                        <a href="/cab">
-                            <button
+                        <button
                             className="submit">Let's go!
-                            </button>
-                        </a>
+                        </button>
                     </div> 
                 </div>
         </div>
