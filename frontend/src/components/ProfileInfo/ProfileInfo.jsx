@@ -1,38 +1,51 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './ProfileInfo.css';
 
 const ProfileInfo = () => {
-  // Додаємо стан для збереження значення тексту профілю
+  const [user, setUser] = useState('');
   const [aboutText, setAboutText] = useState('');
 
-  // Функція для оновлення тексту профілю
-  const handleEdit = () => {
-    // Ось тут ви можете використовувати aboutText, щоб зробити що завгодно з введеним текстом
-    console.log('Збережено новий текст профілю:', aboutText);
+  const fetchData = async () => {
+    try {
+      const response = await axios.get('http://127.0.0.1:8000/api/user/');
+      setUser(response.data.user);
+    } catch (error) {
+      console.error('Error fetching data', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const handleEditClick = () => {
+    console.log('Edit button clicked');
   };
 
   return (
     <div>
       <div className='pr-ns'>
         <div className='ns-info'>
-          <div className="name-info">Name</div>
-          <div className="surname-info">Surname</div>
+          <div className='name-info'>{user && user.first_name}</div>
+          <div className='surname-info'>{user && user.last_name}</div>
         </div>
         <div className='em-info'>
-          <div className="email-info">Email</div>
+          <div className='email-info'>{user && user.email}</div>
         </div>
         <div className='about'>
           <p>About</p>
           <div className='line'></div>
-          {/* При зміні поля введення text-about викликається setAboutText для оновлення стану */}
-          <input 
-            type="text" 
-            className='text-about' 
-            placeholder='Text about' 
-            value={aboutText} 
-            onChange={(e) => setAboutText(e.target.value)} 
+          <input
+            type='text'
+            className='text-about'
+            placeholder='Text about'
+            value={aboutText}
+            onChange={(e) => setAboutText(e.target.value)}
           />
-          <button className='edit' onClick={handleEdit}>Edit</button>
+          <button className='edit' onClick={handleEditClick}>
+            Edit
+          </button>
         </div>
       </div>
     </div>

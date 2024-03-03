@@ -46,7 +46,7 @@ class LoggedInUserView(APIView):
     def get(self, request):
         current_user = request.user
         serializer = LoggedInUserSerializer(current_user)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response({'user': serializer.data}, status=status.HTTP_200_OK)
 
 
 class LogoutUserView(APIView):

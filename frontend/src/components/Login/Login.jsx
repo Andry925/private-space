@@ -28,8 +28,8 @@ const Login = ({ setCurrentUser }) => {
 
             if (response.status === 201 || response.status === 200) {
                 localStorage.setItem('sessionId', response.data.sessionId);
+                navigate('/cab')
                 setCurrentUser(response.data.user);
-                navigate('/cab'); 
             }
         } catch (error) {
             console.error("Such user does not exist", error);
