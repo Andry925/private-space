@@ -8,7 +8,7 @@ import axios from 'axios';
 import './Login.css';
 
 
-const Login = () => {
+const Login = ({setCurrentUser}) => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -22,14 +22,16 @@ const Login = () => {
 
     const handleLogin = async () => {
         try {
-          const response = await axios.post("http://127.0.0.1:8000/login", {
+          const response = await axios.post("http://127.0.0.1:8000/api/login/", {
             email,
             password,
+              role: selectedRole,
           }, { withCredentials: true });
 
           if (response.status === 201 || response.status === 200) {
               localStorage.setItem('sessionId', response.data.sessionId);
-            navigate('/c');
+              setCurrentUser(response.data.user)
+            navigate('');
           }
         } catch (error) {
           console.error("Such user does not exist", error);
@@ -38,7 +40,7 @@ const Login = () => {
 
     const selectRole = (role) => {
         setSelectedRole(role);
-        setDropdownVisible(false); 
+        setDropdownVisible(false);
     };
 
     return (
@@ -49,31 +51,34 @@ const Login = () => {
                 <div className='dropdown'>
                     <p className='as'>as</p>
                     <div className="dropdown">
-                    <button className="dropdown-btn" onClick={toggleDropdown}>
-                        {selectedRole ? selectedRole : 'Choose Role'}
-                    </button>
+                        <button className="dropdown-btn" onClick={toggleDropdown}>
+                            {selectedRole ? selectedRole : 'Choose Role'}
+                        </button>
                         {dropdownVisible && (
                             <div className="dropdown-content" id="dropdownContent">
-                                <a href="#" onClick={() => selectRole('Teacher')}>Teacher</a>
-                                <a href="#" onClick={() => selectRole('Student')}>Student</a>
+                                <button onClick={() => selectRole('Teacher')}>Teacher</button>
+                                <button onClick={() => selectRole('Student')}>Student</button>
                             </div>
                         )}
                     </div>
                 </div>
-                    <div className="inputs">
-                        <div className="input">
-                            <img src={envelope} alt="email"/>
-                            <input type="email" placeholder='Cosmic E-mail' onChange={(e) => setEmail(e.target.value)}/>
-                        </div>
-                        <div className="input">
-                            <img src={lock} alt="lock"/>
-                            <input type="password" placeholder='Password' onChange={(e) => setPassword(e.target.value)}/>
-                        </div>
+                <div className="inputs">
+                <div className="input">
+                        <img src={envelope} alt="email"/>
+                        <input type="email" placeholder='Cosmic E-mail' onChange={(e) => setEmail(e.target.value)}/>
                     </div>
-                    <div className="submit-container">
-                        <button className="submit" onClick={() => navigate('/cab')}>Let's go!</button>
-                    </div> 
+                    <div className="input">
+                        <img src={lock} alt="lock"/>
+                        <input type="password" placeholder='Password' onChange={(e) => setPassword(e.target.value)}/>
+                    </div>
                 </div>
+                <div className="submit-container">
+                    <button
+                        className="submit"
+                        onClick={handleLogin}>Увійти
+                    </button>
+                </div>
+            </div>
         </div>
     );
 };
