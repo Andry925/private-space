@@ -29,8 +29,9 @@
       z-index: 1;
   
       font-family: 'Montserrat';
-      font-size: 16px;
+      font-size: 12px;
       font-weight: 600;
+      cursor: pointer;
     }
     
   .dropdown-content a {
@@ -41,7 +42,7 @@
   }
     
   .dropdown-content a:hover {
-    background-color: #f1f1f1;
+    background-color: #D6BCFA;
   }
     
   .show {

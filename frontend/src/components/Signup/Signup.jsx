@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import cosmo from '../assets/cosmo.svg';
 import envelope from "../assets/envelope.svg";
 import lock from "../assets/lock.svg";
 import user from "../assets/user.svg";
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import './Signup.css';
+
 axios.defaults.withCredentials = true;
 
 const Signup = () => {
@@ -40,8 +41,6 @@ const Signup = () => {
       console.error("Failed registration", error);
       setErrorMessage("Registration failed. Please try again.");
     }
-
-    console.log('Registration function called');
   };
 
   const toggleDropdown = () => {
@@ -57,7 +56,7 @@ const Signup = () => {
     <div className='login-container'>
       <div className='login-items'>
         <img src={cosmo} alt="Cosmo Logo" className='cosmoLogo' />
-        <p className='login-caption'>Log in</p>
+        <p className='login-caption'>Sign Up</p>
         <div className='dropdown'>
           <p className='as'>as</p>
           <div className="dropdown">
@@ -94,7 +93,7 @@ const Signup = () => {
           </div>
         </div>
         <div className="submit-container">
-          <button className="submit" onClick={registration}>Реєстрація</button>
+          <button className="submit" onClick={registration}>Let's go!</button>
         </div>
       </div>
     </div>
