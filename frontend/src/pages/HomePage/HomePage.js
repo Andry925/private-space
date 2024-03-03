@@ -1,6 +1,7 @@
 import React from 'react'
 import Nav from '../../components/Nav/Nav'
 import Home from '../../components/Home/Home'
+import Rating from '../../components/Rating/Rating'
 
 const HomePage = () => {
   return (
@@ -11,6 +12,9 @@ const HomePage = () => {
             <Home/>
           </div>
         </div>
+        <div>
+            <Rating/>
+          </div>
     </div>
   )
 }
