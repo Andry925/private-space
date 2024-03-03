@@ -1,14 +1,13 @@
 
 .pr-ns {
-    display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top: 36px;
 }
 
-.account-info {
-    width: 305px;
-    height: 282px;
+.ns-info {
+    width: 589px;
+    margin-top: 180px;
 }
 
 .info-caption {
@@ -19,33 +18,113 @@
 .name-info {
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: center;
     padding-left: 16px;
-    width: 205px;
+    width: 305px;
     height: 35px;
     margin-left: 52px;
     margin-top: 16px;
     margin-bottom: 16px;
-    background: #FFC700;
+    background: #833AE0;
     color: white;
     border-radius: 10px;
 
     font-weight: 600;
+    font-family: 'Montserrat';
+}
+
+
+.surname-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 16px;
+    width: 305px;
+    height: 35px;
+    margin-left: 52px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    background: #833AE0;
+    color: white;
+    border-radius: 10px;
+
+    font-weight: 600;
+    font-family: 'Montserrat';
 }
 
 .email-info {
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: start;
     padding-left: 16px;
-    width: 205px;
+    width: 225px;
     height: 35px;
     margin-left: 52px;
     margin-top: 16px;
     margin-bottom: 16px;
-    background: #FFC700;
+    background: #833AE0;
     color: white;
     border-radius: 10px;
 
     font-weight: 600;
+    font-family: 'Montserrat';
+}
+
+.ns-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 16px;
+    width: 520px;
+    height: 65px;
+    margin-left: 0px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    background: #833AE0;
+    color: white;
+    border-radius: 10px;
+    border: 0px solid transparent;
+
+    font-weight: 600;
+    font-family: 'Montserrat';
+}
+
+.about {
+    font-family: 'Montserrat';
+    font-size: 18px;
+    color: #D6BCFA;
+    font-weight: 600;
+    margin-left: 52px;
+    margin-top: 30px;
+}
+
+.edit {
+    background-color: #553C9A;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 3px solid transparent; 
+    width: 64px;
+    height: 32px; 
+    font-family: 'Montserrat';
+    font-weight: 600;
+    color: #D6BCFA;
+}
+
+.line {
+    background: #553C9A;
+    width: 535px;
+    height: 3px;
+}
+
+.edit:hover {
+    background-color: #833AE0;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 3px solid #D6BCFA;
 }
