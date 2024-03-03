@@ -3,7 +3,8 @@ from accounts.models import UserProfile
 from rest_framework.authentication import SessionAuthentication
 from rest_framework import permissions, status
 from rest_framework.response import Response
-from .serializers import UserProfileSerializer
+from .serializers import UserProfileSerializer, SubjectSerializer
+from .models import Subject
 from accounts.models import UserProfile
 
 
@@ -55,6 +56,26 @@ class EditStudentProfileView(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_403_FORBIDDEN)
+
+
+class EditSubjectView(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+    authentication_classes = (SessionAuthentication,)
+
+    def get(self, request, pk):
+        profile = Subject.objects.get(pk=pk)
+        serializer = SubjectSerializer(profile)
+        return Response(serializer.data)
+
+
+    def put(self, request, pk):
+        profile = Subject.objects.get(pk=pk)
+        serializer = SubjectSerializer(profile, data=request.data)
+        if serializer.is_valid(raise_exception=True) and request.user.role == "Teacher":
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_403_FORBIDDEN)
+
 
 
 
