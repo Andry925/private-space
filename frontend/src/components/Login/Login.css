@@ -3,46 +3,51 @@
 }
 
 .dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .dropdown-btn {
-    background-color: #553C9A;
-    color: #EEEEEE;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-
-    font-family: 'Montserrat';
-    font-weight: 600;
-    font-size: 16px;
-  }
-  
-  .dropdown-content {
-    position: absolute;
-    background-color: #E9D8FD;
-    min-width: 80px;
-    box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2);
-    z-index: 1;
-
-    font-family: 'Montserrat';
-    font-size: 16px;
-    font-weight: 600;
-  }
-  
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
+  position: relative;
+  display: inline-block;
 }
-  
-.dropdown-content a:hover {
-  background-color: #f1f1f1;
+
+.dropdown-btn {
+  background-color: #553C9A;
+  color: #EEEEEE;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+
+  font-family: 'Montserrat';
+  font-weight: 600;
+  font-size: 16px;
 }
+
+.dropdown-content {
+      position: absolute;
+      background-color: #E9D8FD;
+      min-width: 80px;
+      box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2);
+      z-index: 1;
+  
+      
+}
+
+.dropdown-content button {
+color: black;
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+
+      font-family: 'Montserrat';
+      font-size: 12px;
+      font-weight: 600;
+      border: 1px solid #D6BCFA;
+      cursor: pointer;
+}
+
+.dropdown-content button:hover {
+background-color: #D6BCFA;
+}
+
   
 .show {
   display: block;
