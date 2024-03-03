@@ -1,21 +1,34 @@
-import React, { useState } from 'react';
-import './Nav.css'
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import './Nav.css';
 
 function Nav() {
-    const [activeTab, setActiveTab] = useState('tab-profile');
+    const location = useLocation();
+    const [activeTab, setActiveTab] = useState('');
 
-    const handleTabClick = (tabId) => {
-        setActiveTab(tabId);
-    };
+    useEffect(() => {
+        const pathname = location.pathname;
+
+        if (pathname === '/cab') {
+            setActiveTab('tab-profile');
+        } else if (pathname === '/home') {
+            setActiveTab('tab-home');
+        } else if (pathname === '/test') {
+            setActiveTab('tab-test');
+        } else if (pathname === '/labs') {
+            setActiveTab('tab-labs');
+        } else if (pathname === '/activities') {
+            setActiveTab('tab-activities');
+        }
+    }, [location]);
 
     return (
         <div className="navbar">
-            <a href="/" className={activeTab === 'tab-profile' ? 'tab active' : 'tab'} id="tab-profile" onClick={() => handleTabClick('tab-profile')}>Profile</a>
-            <a href="/" className={activeTab === 'tab-home' ? 'tab active' : 'tab'} id="tab-home" onClick={() => handleTabClick('tab-home')}>Home</a>
-            <a href="/" className={activeTab === 'tab-test' ? 'tab active' : 'tab'} id="tab-test" onClick={() => handleTabClick('tab-test')}>Tests</a>
-            <a href="/" className={activeTab === 'tab-labs' ? 'tab active' : 'tab'} id="tab-labs" onClick={() => handleTabClick('tab-labs')}>Labs</a>
-            <a href="/" className={activeTab === 'tab-tasks' ? 'tab active' : 'tab'} id="tab-tasks" onClick={() => handleTabClick('tab-tasks')}>Tasks</a>
-            <a href="/" className={activeTab === 'tab-activities' ? 'tab active' : 'tab'} id="tab-activities" onClick={() => handleTabClick('tab-activities')}>Activities</a>
+            <Link to="/cab" className={activeTab === 'tab-profile' ? 'tab active' : 'tab'} id="tab-profile">Profile</Link>
+            <Link to="/home" className={activeTab === 'tab-home' ? 'tab active' : 'tab'} id="tab-home">Home</Link>
+            <Link to="/test" className={activeTab === 'tab-test' ? 'tab active' : 'tab'} id="tab-test">Tests</Link>
+            <Link to="/labs" className={activeTab === 'tab-labs' ? 'tab active' : 'tab'} id="tab-labs">Labs</Link>
+            <Link to="/activities" className={activeTab === 'tab-activities' ? 'tab active' : 'tab'} id="tab-activities">Activities</Link>
         </div>
     );
 }

@@ -7,6 +7,7 @@ import SignupPage from './pages/SignupPage/SignupPage';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import CabinetPage from './pages/CabinetPage/CabinetPage';
+import HomePage from './pages/HomePage/HomePage';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: '/cab',
     element: <CabinetPage />,
+  },
+  {
+    path: '/home',
+    element: <HomePage />,
   },
 ]);
 
