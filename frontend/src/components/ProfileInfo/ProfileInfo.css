@@ -1,0 +1,51 @@
+
+.pr-ns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 36px;
+}
+
+.account-info {
+    width: 305px;
+    height: 282px;
+}
+
+.info-caption {
+    font-weight: 600;
+    margin-left: 130px;
+}
+
+.name-info {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding-left: 16px;
+    width: 205px;
+    height: 35px;
+    margin-left: 52px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    background: #FFC700;
+    color: white;
+    border-radius: 10px;
+
+    font-weight: 600;
+}
+
+.email-info {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding-left: 16px;
+    width: 205px;
+    height: 35px;
+    margin-left: 52px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    background: #FFC700;
+    color: white;
+    border-radius: 10px;
+
+    font-weight: 600;
+}
